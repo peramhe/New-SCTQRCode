@@ -26,7 +26,8 @@ This PowerShell script generates a QR code for a SEPA Credit Transfer (SCT) tran
 
 **Syntax:**
 ```
-New-SCTQRCode.ps1 -BIC <String> -IBAN <String> -BeneficiaryName <String> -Amount <Double> -DueDate <DateTime> -Reference <String> [-OuputPNGFilePath <String>] [-SaveToClipboard]
+New-SCTQRCode.ps1 -BIC <String> -IBAN <String> -BeneficiaryName <String> -Amount <Double>
+-DueDate <DateTime> -Reference <String> [-OuputPNGFilePath <String>] [-SaveToClipboard]
 ```
 **Example:**
 ```powershell
