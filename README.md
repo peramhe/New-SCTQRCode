@@ -3,7 +3,7 @@
 This PowerShell script generates a QR code for a SEPA Credit Transfer (SCT) transaction using the QRCoder library. The QR code is saved as a PNG file or can be copied to the clipboard.
 
 **Read the related blog post here:**  
-[How to generate SEPA Credit Transfer (SCT) QR codes using PowerShell | An IT consultants's (b)log](https://peramhe.github.io/posts/How_to_generate_SEPA_Credit_Transfer_(SCT)_QR_codes_using_PowerShell)
+[How to generate SEPA Credit Transfer (SCT) QR codes using PowerShell | An IT consultants's (b)log](https://peramhe.github.io/posts/How-to-generate-SEPA-Credit-Transfer-(SCT)-QR-codes-using-PowerShell)
 
 ## Requirements
 
