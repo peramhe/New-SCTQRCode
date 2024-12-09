@@ -32,8 +32,11 @@ The output file path for the generated QR code PNG. Defaults to a file named SCT
 .PARAMETER SaveToClipboard
 Use this switch to save the QR code PNG to the clipboard.
 
+.PARAMETER PixelsPerModule
+The number of pixels per module (block) in the QR code. Defaults to 20.
+
 .EXAMPLE
-.\New-SCTQRCode.ps1 -BIC "DEUTDEFF" -IBAN "DE89370400440532013000" -BeneficiaryName "John Doe" -Amount 123.45 -DueDate "2023-12-31" -ReferenceNumber "RF18539007547034"
+.\New-SCTQRCode.ps1 -BIC "DEUTDEFF" -IBAN "DE89370400440532013000" -BeneficiaryName "John Doe" -Amount 123.45 -DueDate "2023-12-31" -Reference "RF18539007547034"
 
 Generates a QR code for the specified SCT transaction and saves it as a PNG file.
 
@@ -62,7 +65,11 @@ Param(
     [Parameter(HelpMessage="The output file path for the generated QR code PNG.")]
     [string]$OutputPNGFilePath = "$PSScriptRoot\SCTQRCode_$(Get-Date -Format 'yyyyMMdd\_HHmmss').png",
     [Parameter(HelpMessage="Use this switch to save the QR code PNG to the clipboard.")]
-    [switch]$SaveToClipboard
+    [switch]$SaveToClipboard,
+    [Parameter(HelpMessage="The number of pixels per module (block) in the QR code.")]
+    [ValidateScript({$_ -ge 0})]
+    [int]$PixelsPerModule = 20
+
 )
 
 $ErrorActionPreference = 'Stop'
@@ -98,7 +105,7 @@ $QRCodeData = $QRCodeGenerator.CreateQrCode($SCTQRCodePayload, [QRCoder.QRCodeGe
 $PngByteQRCode = [QRCoder.PngByteQRCode]::new($QRCodeData)
 
 # Return the graphic as a byte array with 20 pixel module size
-$PngByteArray = $PngByteQRCode.GetGraphic(20)
+$PngByteArray = $PngByteQRCode.GetGraphic($PixelsPerModule)
 
 # Save the PNG to the specified file path or clipboard
 If ($SaveToClipboard) {

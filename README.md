@@ -21,13 +21,15 @@ This PowerShell script generates a QR code for a SEPA Credit Transfer (SCT) tran
 `-Message` (string): The message for the transaction. Either this or the reference number must be provided. (Mandatory if `-Reference` is not provided)  
 `-OutputPNGFilePath` (string): The output file path for the generated QR code PNG. Defaults to a file named `SCTQRCode_<timestamp>.png` in the script's directory.  
 `-SaveToClipboard` (switch): Use this switch to save the QR code PNG to the clipboard.  
+`-PixelsPerModule` (int): The number of pixels per module (block) in the QR code. Determines the resulting size of the QR code.
 
 ## Usage
 
 **Syntax:**
 ```
-New-SCTQRCode.ps1 -BIC <String> -IBAN <String> -BeneficiaryName <String> -Amount <Double>
--DueDate <DateTime> -Reference <String> [-OutputPNGFilePath <String>] [-SaveToClipboard]
+New-SCTQRCode.ps1 -BIC <String> -IBAN <String> -BeneficiaryName <String> -Amount <Double> 
+-DueDate <DateTime> -Reference <String> [-Output PNGFilePath <String>] [-SaveToClipboard] 
+[-PixelsPerModule <Int32>]
 ```
 **Example:**
 ```powershell
